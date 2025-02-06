@@ -1,6 +1,9 @@
+import 'package:agriculture_mobile_app/models/product.dart';
 import 'package:agriculture_mobile_app/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+
+import '../widget/product_items.dart';
 
 class AgriplantHomePage extends StatefulWidget {
   const AgriplantHomePage({super.key});
@@ -36,6 +39,7 @@ class _AgriplantHomePageState extends State<AgriplantHomePage> {
                     Flexible(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             "Free Consultation",
@@ -46,38 +50,76 @@ class _AgriplantHomePageState extends State<AgriplantHomePage> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Text("Get free support from our customer service",
-                          style: TextStyle(fontSize: 16),
+                          Text(
+                            "Get free support from our customer service",
+                            style: TextStyle(fontSize: 16),
                           ),
                           FilledButton(
-                            style: FilledButton.styleFrom(
-                              backgroundColor: mainGreenColor,
-                              shape: ContinuousRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              )
-                            ),
-                              onPressed: (){},
-                              child: Text("Call Now")
-                          ),
+                              style: FilledButton.styleFrom(
+                                  backgroundColor: mainGreenColor,
+                                  shape: ContinuousRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  )),
+                              onPressed: () {},
+                              child: Text("Call Now")),
                           SizedBox(),
                         ],
                       ),
                     ),
                     Center(
-                      child: Image.asset("assets/rb_534.png", width: 190,),
+                      child: Image.asset(
+                        "assets/rb_534.png",
+                        width: 190,
+                      ),
                     )
                   ],
                 ),
               ),
             ),
-          )
+          ),
+          SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Featured Products",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  "See All",
+                  style: TextStyle(
+                    color: mainGreenColor,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          GridView.builder(
+            itemCount: agroProducts.length,
+            shrinkWrap: true,
+            physics: BouncingScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 0.84,
+              crossAxisSpacing: 2,
+              mainAxisSpacing: 2,
+            ),
+            itemBuilder: (context, index) {
+              return ProductItems(
+                product: agroProducts[index],
+              );
+            },
+          ),
         ],
       ),
     );
   }
 }
-
-
 
 Widget searchBarFilter() {
   return Row(
