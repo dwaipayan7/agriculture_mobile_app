@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/product.dart';
+import '../pages/product_details.dart';
 import '../utils/colors.dart';
 
 class ProductItems extends StatelessWidget {
@@ -10,7 +11,16 @@ class ProductItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductDetailsPage(
+              product: product,
+            ),
+          ),
+        );
+      },
       child: Card(
         color: Colors.white,
         clipBehavior: Clip.antiAlias,
@@ -86,7 +96,7 @@ class ProductItems extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 35,
+                        height: 38,
                         width: 38,
                         child: IconButton(
                           style: IconButton.styleFrom(
@@ -96,9 +106,11 @@ class ProductItems extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {},
-                          icon: Icon(
-                            Icons.add,
-                            color: Colors.white,
+                          icon: Center(
+                            child: Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
