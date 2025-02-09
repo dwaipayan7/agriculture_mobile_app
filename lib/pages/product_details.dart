@@ -12,7 +12,6 @@ class ProductDetailsPage extends StatefulWidget {
 }
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
-
   int count = 1;
 
   @override
@@ -44,7 +43,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
         padding: EdgeInsets.all(18),
         children: [
           Container(
-            height: 270,
+            height: 260,
             width: double.infinity,
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -125,36 +124,35 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 width: 30,
                 child: IconButton(
                   iconSize: 18,
-                    padding: EdgeInsets.zero,
-                    style: IconButton.styleFrom(
-                      backgroundColor: mainGreenColor,
-                    ),
-                    onPressed: (){
+                  padding: EdgeInsets.zero,
+                  style: IconButton.styleFrom(
+                    backgroundColor: mainGreenColor,
+                  ),
+                  onPressed: () {
                     setState(() {
-                      if(count > 1){
+                      if (count > 1) {
                         count--;
                       }
                     });
-                    },
-                    icon: Icon(
-                     Icons.remove,
-                     color: Colors.white,
-                    ),
+                  },
+                  icon: Icon(
+                    Icons.remove,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 12,
                 ),
-                child: Text("$count ${widget.product.unit}",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+                child: Text(
+                  "$count ${widget.product.unit}",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-
               SizedBox(
                 height: 30,
                 width: 30,
@@ -164,7 +162,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   style: IconButton.styleFrom(
                     backgroundColor: mainGreenColor,
                   ),
-                  onPressed: (){
+                  onPressed: () {
                     setState(() {
                       count++;
                     });
@@ -176,6 +174,21 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 ),
               ),
             ],
+          ),
+          SizedBox(height: 20),
+          Text(
+            "Description",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 22,
+            ),
+          ),
+          SizedBox(height: 10),
+          Text(
+            widget.product.description,
+            style: TextStyle(
+              fontSize: 16,
+            ),
           ),
         ],
       ),
